@@ -1,0 +1,124 @@
+---
+import { Colors } from "../constants/colors";
+
+const yearsExperience = import.meta.env.PUBLIC_YEARS_EXPERIENCE
+
+---
+
+<div class="HomeSection SectionMain flex flex-col" id="">
+  <div class="HomeSection-image"></div>
+  <p class="mt-10 text-3xl font-bold">
+    Faihd Pineda
+  </p>
+  <p class="HomeSection-text max-w-md text-center text-lg mt-5">
+    Full-Stack developer, with 
+    <span class="SectionMain-experience" id="experience">{ yearsExperience } year</span><span class="SectionMain-punter is-desactiveAnimation" id="punter">|</span> 
+    experience in the web develpoment and the cloud services
+  <p/>
+</div>
+
+<script>
+  const experienceSpan = document.getElementById("experience")
+
+  if (experienceSpan) {
+    const yearsExperience = parseFloat(experienceSpan.innerHTML)
+    
+    const toYears = (): string => {
+      return yearsExperience + ` ${yearsExperience > 1 ? "years" : "year"}`
+    }
+
+    const toMonths = (): string => {
+      return (Math.round(yearsExperience * 12)) + ` months`
+    }
+    
+    const toDays = (): string => {
+      return (Math.round(yearsExperience * 12 * 30)) + ` days`
+    }
+
+    const toHours = (): string => {
+      return (Math.round(yearsExperience * 12 * 30 * 24)) + ` hours`
+    }
+
+    const delay = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
+
+    const write = async (message: string): Promise<void> => {
+      experienceSpan.innerHTML = ""
+      for (const letter of message) {
+        await delay(200)
+        experienceSpan.innerHTML += letter
+      }
+    }
+
+    const eraseWord = async (message: string): Promise<void> => {
+      const length = message.length;
+      if (length > 0) {
+        for (let i = 0; i < message.length; i++) {
+          await delay(100)
+          experienceSpan.innerHTML = message.substring(0, length - i);
+        }
+      }
+    }
+
+    const initChangeExperienceMeasure = async (): Promise<void> => {
+      const punter = document.getElementById("punter")
+      const time = 5000
+      
+      const inYears = toYears()
+      const inMonths = toMonths()
+      const inDays = toDays()
+      const inHours = toHours()
+
+      const writeAndErase = async (message: string) => {
+        await write(message)
+        punter?.classList.add("is-activeAnimation")
+        await delay(time);
+        punter?.classList.remove("is-activeAnimation")
+        await eraseWord(message)
+      }
+
+      await writeAndErase(inYears)
+      await writeAndErase(inMonths)
+      await writeAndErase(inDays)
+      await writeAndErase(inHours)
+
+      initChangeExperienceMeasure()
+    };
+
+    initChangeExperienceMeasure()
+  }
+
+</script>
+
+<style define:vars={{ DARK_GRAY: Colors.DARK_GRAY, RED: Colors.RED }}>
+  .SectionMain {
+    width: 66.67%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+  }  
+
+  .SectionMain-experience {
+    color: var(--RED);
+    font-weight: bold;
+  }
+
+  .SectionMain-experience, .SectionMain-punter {
+    font-size: 22px !important;
+  }
+
+  .is-activeAnimation {
+    animation: vanish .8s infinite ease;
+  }
+
+  @keyframes vanish {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+</style>

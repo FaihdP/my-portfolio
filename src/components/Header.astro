@@ -1,0 +1,134 @@
+---
+import { Colors } from "../constants/colors";
+import { Image } from "astro:assets";
+import fCursiveImage from "../images/f-cursive.svg"
+---
+
+<header class="Header flex flex-row">
+  <a class="Header-logo" href="#">
+    <span>
+      <Image src={ fCursiveImage } alt="logo">
+    </span>
+  </a>
+  <div class="Header-buttonContainer">
+    <div class="Header-buttonContainer-hamburgerMenu">
+    </div>
+    <div class="Header-buttonContainer-lines">
+      <div class="Header-buttonContainer-lines-line"></div>
+      <div class="Header-buttonContainer-lines-line"></div>
+      <div class="Header-buttonContainer-lines-line"></div>
+    </div>
+  </div>
+</header>
+
+<style define:vars={{ DARK_GRAY: Colors.DARK_GRAY, OFF_WHITE: Colors.OFF_WHITE }}>
+  .Header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 100%;
+    color: var(--DARK_GRAY);
+  }
+
+  .Header-logo {
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    width: 40px;
+    animation: up-move 5s ease infinite;
+  }
+
+  @keyframes up-move {
+    0%, 50% {
+      top: 40px;
+    }
+
+    5%, 15% {
+      transform: rotate(10deg);
+    }
+
+    10%, 20% {
+      transform: rotate(-10deg);
+    }
+
+    25% {
+      top: 30px;
+    }
+  }
+
+  .Header-buttonContainer {
+    position: absolute;
+    display: grid;
+    place-content: center;
+    width: 150px;
+    height: 100px;
+    top: 0;
+    right: 0;
+  }
+
+  .Header-buttonContainer-hamburgerMenu {
+    cursor: pointer;
+    position: absolute;
+    display: grid;
+    place-content: center;
+    background-color: var(--DARK_GRAY);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    top: 30px;
+    right: 50px;
+    box-shadow: 0px 2px 1px 1px rgba(0, 0, 0, 0.3);
+    transition: all 250ms ease-out;
+  }
+
+  .Header-buttonContainer:hover .Header-buttonContainer-hamburgerMenu {
+    transform: scale(1.3);
+  }
+
+  .Header-buttonContainer-lines {
+    cursor: pointer;
+    position: absolute;
+    display: grid;
+    place-content: center;
+    width: 56px;
+    height: 56px;
+    gap: 5px;
+    top: 30px;
+    right: 50px;
+  }
+
+  .Header-buttonContainer-lines-line {
+    position: relative;
+    width: 20px;
+    height: 2px;
+    background-color: var(--OFF_WHITE);
+    transform: scaleX(0);
+    animation: open-in .3s cubic-bezier(.18,.89,.67,1.16) .3s 1 normal forwards;
+  }
+
+  @keyframes open-in {
+    0% {
+        -moz-transform: scaleX(0);
+        -ms-transform: scaleX(0);
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -moz-transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0
+    }
+
+    100% {
+        -moz-transform: scaleX(1);
+        -ms-transform: scaleX(1);
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -moz-transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0
+    }
+}
+
+</style>

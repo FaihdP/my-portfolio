@@ -1,0 +1,21 @@
+---
+import { Colors } from "../constants/colors";
+---
+
+<a href="/projects">
+  <div class="HomeSection SecondSection ProjectsSection flex flex-col">
+    <div class="HomeSection-image" />
+    <div class="HomeSection-text max-w-xs text-left mt-10">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </div>
+  </div>
+</a>
+
+<style define:vars={{ DARK_GRAY: Colors.DARK_GRAY }}>
+  .ProjectsSection {
+    background-color: var(--DARK_GRAY);
+    bottom: 0;
+    left: 0;
+    color: #fff;
+  }
+</style>
