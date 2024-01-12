@@ -7,19 +7,19 @@ import ProjectsSection from "../components/ProjectsSection.astro"
 import { Colors } from "../constants/colors";
 ---
 
-<Layout title="Welcome.">
-	<main>
-		<Header />
-	</main>
-	<div class="fullscreen">
-		<AboutSection />
+<Layout title="Welcome - FaihdP web portfolio">
+	<Header />
+	<div class="Fullscreen">
+		<aside>
+			<AboutSection />
+			<MainSection />
+		</aside>
 		<ProjectsSection />
-		<MainSection />
 	</div>
 </Layout>
 
 <style is:global define:vars={{ RED: Colors.RED }}>
-	.fullscreen {
+	.Fullscreen {
 		position: relative;
 		width: 100vw;
 		height: 100vh;
