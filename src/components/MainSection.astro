@@ -1,9 +1,7 @@
 ---
 import { Colors } from "../constants/colors";
-
-const yearsExperience = import.meta.env.PUBLIC_YEARS_EXPERIENCE
-
 ---
+
 <main class="HomeSection SectionMain flex flex-col" id="">
   <img class="HomeSection-image"></>
   <p class="mt-10 text-3xl font-bold">
@@ -11,7 +9,7 @@ const yearsExperience = import.meta.env.PUBLIC_YEARS_EXPERIENCE
   </p>
   <p class="HomeSection-text max-w-md text-center text-lg mt-5">
     Full-Stack developer, with 
-    <span class="SectionMain-experience" id="experience">{ yearsExperience } year</span><span class="SectionMain-punter is-desactiveAnimation" id="punter">|</span> 
+    <span class="SectionMain-experience" id="experience">{ import.meta.env.PUBLIC_YEARS_EXPERIENCE } year</span><span class="SectionMain-punter is-desactiveAnimation" id="punter">|</span> 
     experience in the web develpoment and the cloud services
   <p/>
 </main>
