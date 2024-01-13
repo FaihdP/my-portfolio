@@ -1,5 +1,7 @@
 import { useState } from "react"
-import "../../css/index.css"
+import "../../css/HamburgerButton.css"
+import HamburgerButtonLineOpen from "./HamburgerButtonLineOpen"
+import HamburgerButtonLineClose from "./HamburgerButtonLineClose";
 
 function HamburgerButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,11 +12,15 @@ function HamburgerButton() {
 
   return (
     <div className={`Header-buttonContainer ${isOpen ? "is-open" : ""}`}>
-      <div className={`Header-buttonContainer-hamburgerMenu`} onClick={openHamburgerMenu}></div>
-      <div className={`Header-buttonContainer-lines`} onClick={openHamburgerMenu}>
-        <div className={`Header-buttonContainer-lines-line ${isOpen ? "open-out-animation" : "open-in-animation"}`} />
-        <div className={`Header-buttonContainer-lines-line ${isOpen ? "open-out-animation" : "open-in-animation"}`} />
-        <div className={`Header-buttonContainer-lines-line ${isOpen ? "open-out-animation" : "open-in-animation"}`} />
+      <div className="Header-buttonContainer-hamburgerMenu" onClick={openHamburgerMenu}></div>
+      <div className="Header-buttonContainer-lines open" onClick={openHamburgerMenu}>
+        <HamburgerButtonLineOpen isOpen={isOpen} />
+        <HamburgerButtonLineOpen isOpen={isOpen} />
+        <HamburgerButtonLineOpen isOpen={isOpen} />
+      </div>
+      <div className="Header-buttonContainer-lines close" onClick={openHamburgerMenu}>
+        <HamburgerButtonLineClose isOpen={isOpen} />
+        <HamburgerButtonLineClose isOpen={isOpen} />
       </div>
     </div>
   )
