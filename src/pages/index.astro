@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import MainSection from "../components/MainSection.astro"
 import AboutSection from "../components/AboutSection.astro"
 import ProjectsSection from "../components/ProjectsSection.astro"
-import { Colors } from "../constants/colors";
+import { Colors } from "../constants";
 ---
 
 <Layout title="Welcome - FaihdP web portfolio">
@@ -12,9 +12,9 @@ import { Colors } from "../constants/colors";
 	<div class="Fullscreen">
 		<aside>
 			<AboutSection />
-			<MainSection />
+			<ProjectsSection />
 		</aside>
-		<ProjectsSection />
+		<MainSection />
 	</div>
 </Layout>
 
@@ -32,7 +32,7 @@ import { Colors } from "../constants/colors";
 	}
 
 	.SecondSection {
-		width: 33.33%;
+		width: 33.3%;
 		height: 50%;
     transition: all 150ms ease-out;
 		justify-content: center;
@@ -48,6 +48,7 @@ import { Colors } from "../constants/colors";
   }
 
 	.HomeSection-image {
+		position: relative;
     width: 250px;
     height: 250px;
     background-color: rgb(0, 0, 0, 0.1);

@@ -1,10 +1,11 @@
 ---
-import { Colors, YEARS_EXPERIENCE } from "../constants/colors";
+import { Colors, YEARS_EXPERIENCE } from "../constants";
 ---
 
-<main class="HomeSection SectionMain flex flex-col" id="">
+<main class="HomeSection SectionMain flex flex-col">
   <img class="HomeSection-image"></>
-  <p class="mt-10 text-3xl font-bold">
+
+  <p class="mt-16 text-3xl font-bold">
     Faihd Pineda
   </p>
   <p class="HomeSection-text max-w-md text-center text-lg mt-5">
@@ -15,85 +16,18 @@ import { Colors, YEARS_EXPERIENCE } from "../constants/colors";
 </main>
 
 <script>
-  const experienceSpan = document.getElementById("experience")
-
-  if (experienceSpan) {
-    const yearsExperience = parseFloat(experienceSpan.innerHTML)
-    
-    const toYears = (): string => {
-      return yearsExperience + ` ${yearsExperience > 1 ? "years" : "year"}`
-    }
-
-    const toMonths = (): string => {
-      return (Math.round(yearsExperience * 12)) + ` months`
-    }
-    
-    const toDays = (): string => {
-      return (Math.round(yearsExperience * 12 * 30)) + ` days`
-    }
-
-    const toHours = (): string => {
-      return (Math.round(yearsExperience * 12 * 30 * 24)) + ` hours`
-    }
-
-    const delay = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
-
-    const write = async (message: string): Promise<void> => {
-      experienceSpan.innerHTML = ""
-      for (const letter of message) {
-        await delay(200)
-        experienceSpan.innerHTML += letter
-      }
-    }
-
-    const eraseWord = async (message: string): Promise<void> => {
-      const length = message.length;
-      if (length > 0) {
-        for (let i = 0; i < message.length; i++) {
-          await delay(100)
-          experienceSpan.innerHTML = message.substring(0, length - i);
-        }
-      }
-    }
-
-    const initChangeExperienceMeasure = async (): Promise<void> => {
-      const punter = document.getElementById("punter")
-      const time = 5000
-      
-      const inYears = toYears()
-      const inMonths = toMonths()
-      const inDays = toDays()
-      const inHours = toHours()
-
-      const writeAndErase = async (message: string) => {
-        await write(message)
-        punter?.classList.add("is-activeAnimation")
-        await delay(time);
-        punter?.classList.remove("is-activeAnimation")
-        await eraseWord(message)
-      }
-
-      await writeAndErase(inYears)
-      await writeAndErase(inMonths)
-      await writeAndErase(inDays)
-      await writeAndErase(inHours)
-
-      initChangeExperienceMeasure()
-    };
-
-    initChangeExperienceMeasure()
-  }
-
+  import "../util/changeTextExperience"
 </script>
 
 <style define:vars={{ DARK_GRAY: Colors.DARK_GRAY, RED: Colors.RED }}>
   .SectionMain {
-    width: 66.67%;
+    width: 66.3%;
     height: 100%;
     justify-content: center;
     align-items: center;
     top: 0;
     right: 0;
+    /* animation: reduce 10s ease; */
   }  
 
   .SectionMain-experience {
@@ -118,4 +52,17 @@ import { Colors, YEARS_EXPERIENCE } from "../constants/colors";
     }
   }
 
+  @keyframes reduce {
+    0% {
+      width: 100%;
+    }
+
+    75% {
+      width: 100%;
+    }
+
+    100% {
+      width: 66.7%;
+    }
+  }
 </style>

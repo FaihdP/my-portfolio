@@ -1,8 +1,8 @@
 ---
-import { Colors } from "../constants/colors";
+import { Colors } from "../constants";
 import { Image } from "astro:assets";
 import fCursiveImage from "../images/f-cursive.svg"
-import HamburgerButton from "./react/HamburgerButton.tsx";
+import HamburgerButton from "./react/HamburgerButton/Index";
 ---
 
 <header class="Header flex flex-row">
@@ -32,7 +32,7 @@ import HamburgerButton from "./react/HamburgerButton.tsx";
     animation: up-move 5s ease infinite;
   }
 
-  @keyframes up-move {
+  /* @keyframes up-move {
     0%, 50% {
       top: 40px;
     }
@@ -48,5 +48,5 @@ import HamburgerButton from "./react/HamburgerButton.tsx";
     25% {
       top: 30px;
     }
-  }
+  } */
 </style>

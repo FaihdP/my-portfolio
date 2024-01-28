@@ -1,5 +1,5 @@
 ---
-import { Colors } from "../constants/colors";
+import { Colors } from "../constants";
 ---
 
 <a href="/my-portfolio/about">
@@ -14,7 +14,11 @@ import { Colors } from "../constants/colors";
 <style define:vars={{ RED: Colors.RED }}>
   .AboutSection {
     background-color: var(--RED);
+    width: 33.3%;
+    height: 50%;
     top: 0;
     left: 0;
+    animation: move 10s ease-in-out;
+    transform-origin: center right;
   }
 </style>

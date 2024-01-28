@@ -1,7 +1,8 @@
 import { useState } from "react"
-import "../../css/HamburgerButton.css"
-import HamburgerButtonLineOpen from "./HamburgerButtonLineOpen"
-import HamburgerButtonLineClose from "./HamburgerButtonLineClose";
+import "../../../css/HamburgerButton.css"
+import LineOpen from "./LineOpen";
+import LineClose from "./LineClose";
+import Menu from "./Menu"
 
 function HamburgerButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,14 +15,15 @@ function HamburgerButton() {
     <div className={`Header-buttonContainer ${isOpen ? "is-open" : ""}`}>
       <div className="Header-buttonContainer-hamburgerMenu" onClick={openHamburgerMenu}></div>
       <div className="Header-buttonContainer-lines open" onClick={openHamburgerMenu}>
-        <HamburgerButtonLineOpen isOpen={isOpen} />
-        <HamburgerButtonLineOpen isOpen={isOpen} />
-        <HamburgerButtonLineOpen isOpen={isOpen} />
+        <LineOpen isOpen={isOpen} />
+        <LineOpen isOpen={isOpen} />
+        <LineOpen isOpen={isOpen} />
       </div>
       <div className="Header-buttonContainer-lines close" onClick={openHamburgerMenu}>
-        <HamburgerButtonLineClose isOpen={isOpen} />
-        <HamburgerButtonLineClose isOpen={isOpen} />
+        <LineClose isOpen={isOpen} />
+        <LineClose isOpen={isOpen} />
       </div>
+      <Menu isOpen={isOpen} />
     </div>
   )
 }
